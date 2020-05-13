@@ -1,5 +1,4 @@
 # bayesian-matrix-population
----
 A Bayesian approach to size-structured matrix population model for estimating daily rates of phytoplankton cell division, growth and respiration
 
 
