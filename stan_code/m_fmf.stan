@@ -9,12 +9,13 @@ data {
     real<lower=0> v_min;    // size in smallest size class in um^-3
     int<lower=0> delta_v_inv;  // inverse of delta_v 
     // observations
-    real<lower=0,upper=nt*dt>  t_obs[nt_obs]; // the time of each observation
+    real<lower=0>  t_obs[nt_obs]; // the time of each observation
     real<lower=0> obs[m,nt_obs]; // observations
     int<lower=0> obs_count[m,nt_obs]; // count observations
     // for cross-validation
     int<lower=0, upper=1> i_test[nt_obs];
     int prior_only;
+    int<lower=0> start;  // initial time in hours
 }
 transformed data {
     int j;
@@ -25,7 +26,7 @@ transformed data {
     row_vector[m] v_mid;    // vector of sizes for each size class
     real<lower=0> v_diff[m-1];// vector of size-differences for first m-1 size classes
     int<lower=0> t[nt];     // vector of times in minutes since start 
-    int<lower=1, upper=nt> it_obs[nt_obs]; // the time index of each observation
+    int<lower=0> it_obs[nt_obs]; // the time index of each observation
     int n_test = sum(i_test);
 
     j = 1 + delta_v_inv; 
@@ -44,7 +45,7 @@ transformed data {
         v_diff[i] = v_mid[i+1] - v_mid[i];
     }
     // populate time vector
-    t[1] = 0;
+    t[1] = start*60;
     for (i in 2:nt){
         t[i] = (t[i-1] + dt);
     }

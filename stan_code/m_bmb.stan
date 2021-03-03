@@ -65,7 +65,7 @@ parameters {
     real<lower=0,upper=1.0/dt_norm> gamma_max;
     real<lower=0,upper=1.0/dt_norm> rho_max; 
     real<lower=0, upper=5000> E_star; 
-    real<lower=1e3> sigma; 
+    real<lower=1e-10> sigma; 
     simplex[m] theta[nt_obs];
     simplex[m] w_ini;  // initial conditions
 }
