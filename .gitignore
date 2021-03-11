@@ -1,3 +1,7 @@
 **/.ipynb-checkpoints/**
+**/.ipynb_checkpoints/**
+**/.ipynb-checkpoints/
 results/**
 **/.DS_Store
+results_old/**
+**/convert_results.ipynb
