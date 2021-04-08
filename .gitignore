@@ -6,3 +6,4 @@ results/**
 results_old/**
 **/convert_results.ipynb
 stan_test/**
+**/combine_results.ipynb
